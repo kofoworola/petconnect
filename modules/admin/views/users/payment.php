@@ -38,7 +38,7 @@
                                 <th>Business Name</th>
                                 <th><?php echo lang('stripe_secret_key'); ?></th>
                                 <th><?php echo lang('stripe_publish_key'); ?></th>
-                                <th>Paypal Acess Token</th>
+                                <th>Paypal Access Token</th>
                                 <th><?php echo lang('start_invoice');?></th>
                                 <th></th>
                             </tr>
@@ -55,7 +55,7 @@
                                         <td><?php echo $this->setting_model->get_setting_name_by_id($new->id); ?></td>
                                         <td><?php echo $new->stripe_secret ?></td>
                                         <td><?php echo $new->stripe_publish ?></td>
-                                        <td><?php echo ($new->acess_token == '')? 'not added' : 'added'?></td>
+                                        <td><?php echo ($new->access_token == '')? 'not added' : 'added'?></td>
                                         <td><?php echo $new->start_invoice?></td>
                                         <td>
                                             <div class="btn-group">
@@ -132,10 +132,10 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <b>Paypal Acess Token</b>
+                                            <b>Paypal Access Token</b>
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="acess_token" value="<?php echo $new->acess_token; ?>" />
+                                            <input type="text" class="form-control" name="access_token" value="<?php echo $new->access_token; ?>" />
                                         </div>
                                     </div>
                                 </div>
