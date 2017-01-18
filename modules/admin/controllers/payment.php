@@ -51,7 +51,7 @@ class payment extends MX_Controller {
         } else {
             $data['i_no'] = $invoice->invoice + 1;
         }
-        print_r($user->access_token);die();
+
         $gateway = new Braintree\Gateway(array(
             'accessToken' => $user->access_token,
         ));
