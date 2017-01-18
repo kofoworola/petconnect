@@ -55,7 +55,7 @@
                                         <td><?php echo $this->setting_model->get_setting_name_by_id($new->id); ?></td>
                                         <td><?php echo $new->stripe_secret ?></td>
                                         <td><?php echo $new->stripe_publish ?></td>
-                                        <td><?php echo ($new->acess_token == '')? 'not added' : 'added'?></td>
+                                        <td><?php echo ($new->access_token == '')? 'not added' : 'added'?></td>
                                         <td><?php echo $new->start_invoice?></td>
                                         <td>
                                             <div class="btn-group">
@@ -135,7 +135,7 @@
                                             <b>Paypal Acess Token</b>
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="acess_token" value="<?php echo $new->acess_token; ?>" />
+                                            <input type="text" class="form-control" name="access_token" value="<?php echo $new->access_token; ?>" />
                                         </div>
                                     </div>
                                 </div>
