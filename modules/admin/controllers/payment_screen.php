@@ -40,7 +40,7 @@ class payment_screen extends MX_Controller {
                 $save['stripe_secret'] = $this->input->post('stripe_secret');
                 $save['stripe_publish'] = $this->input->post('stripe_publish');
                 $save['start_invoice'] = $this->input->post('start_invoice');
-                $save['acess_token'] = $this->input->post('acess_token');
+                $save['access_token'] = $this->input->post('access_token');
                 
                 $p_key = $this->user_model->save($save, $id);
                 

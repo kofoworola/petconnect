@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 require_once APPPATH . '/third_party/stripe/init.php';
-require_once APPPATH . '/vendor/autoload.php';
+require_once APPPATH . '/third_party/braintree/lib/Braintree.php';
 
 class payment extends MX_Controller {
 
@@ -51,10 +51,11 @@ class payment extends MX_Controller {
         } else {
             $data['i_no'] = $invoice->invoice + 1;
         }
-
-        $gateway = new Braintree_Gateway(array(
+        print_r($user->access_token);die();
+        $gateway = new Braintree\Gateway(array(
             'accessToken' => $user->access_token,
         ));
+
 
         $data['token'] = $gateway->clientToken()->generate();
         $data['order_no'] = $this->prescription_model->get_order_no();
@@ -86,9 +87,9 @@ class payment extends MX_Controller {
                 ]
             ]);
             if ($result->success) {
-                $this->session->set_flashdata('message', 'Payment was complete, transaction id: '. $result->transaction->id);
+                $this->session->set_flashdata('message', 'Payment was complete, transaction id: ' . $result->transaction->id);
             } else {
-                $this->session->set_flashdata('error', 'Payment could not be complete: '. $result->message);
+                $this->session->set_flashdata('error', 'Payment could not be complete: ' . $result->message);
             }
         } else {
             redirect('admin/dshboard');
