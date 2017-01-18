@@ -63,12 +63,12 @@ class payment extends MX_Controller {
         $this->load->view('template/main', $data);
     }
 
-    function paypal_confrim() {
+    function paypal_confirm() {
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $admin = $this->session->userdata('admin');
             $user = $this->user_model->get_user_by_id($admin['id']);
             $amount = $this->input->post('amount');
-            $nonce = $this->input->post('amount');
+            $nonce = $this->input->post('nonce');
             $order_no = $this->input->post('order_no');
             $setting = $this->setting_model->get_setting_by_id($admin['id']);
 
@@ -81,14 +81,21 @@ class payment extends MX_Controller {
                 "paymentMethodNonce" => $nonce,
                 "orderId" => $order_no,
                 "descriptor" => [
-                    "name" => $setting->name,
+                    "name" => 'cmp*productdescription',
                     "phone" => $seting->contact
                 ]
             ]);
             if ($result->success) {
-                $this->session->set_flashdata('message', 'Payment was complete, transaction id: '. $result->transaction->id);
+                $save['amount'] = $amount;
+                $save['patient_id'] = $this->input->post('patient_id');
+                $save['payment_mode'] = "Payapal";
+                $save['date'] = $this->input->post('date');
+                $save['invoice'] = $this->input->post('invoice_no');
+                $save['order_no'] = $order_no;
+                $this->prescription_model->save_fees($save);
+                $this->session->set_flashdata('message', 'Payment was complete, transaction id: ' . $result->transaction->id);
             } else {
-                $this->session->set_flashdata('error', 'Payment could not be complete: '. $result->message);
+                $this->session->set_flashdata('error', 'Payment could not be complete: ' . $result->message);
             }
         } else {
             redirect('admin/dshboard');
