@@ -64,7 +64,7 @@ class payment extends MX_Controller {
         $this->load->view('template/main', $data);
     }
 
-    function paypal_confrim() {
+    function paypal_confirm() {
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $admin = $this->session->userdata('admin');
             $user = $this->user_model->get_user_by_id($admin['id']);
