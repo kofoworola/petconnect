@@ -92,7 +92,7 @@ class payment extends MX_Controller {
                 $this->session->set_flashdata('error', 'Payment could not be complete: ' . $result->message);
             }
         } else {
-            redirect('admin/dshboard');
+            redirect('admin/dashboard');
         }
     }
 
