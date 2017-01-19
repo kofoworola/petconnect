@@ -150,19 +150,19 @@
                     </div>
 
                     <div id="sms">
-                        <div class="form-group" id="default">
-                            <div class="row">
-                                <div class="col-md-6">    
-                                    <input type="checkbox" name="default" value="1">Use notification date
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group" id="reminder">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="name" style="clear:both;">Reminder Date </label>
                                     <input type="text" name="reminder" value="" class="form-control datetimepicker date_time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="default">
+                            <div class="row">
+                                <div class="col-md-6">    
+                                    <input type="checkbox" name="default" value="1">Use notification date and time as reminder
                                 </div>
                             </div>
                         </div>
@@ -339,7 +339,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">    
-                                            <input type="checkbox" name="sms" value="1" class="sms_notify" <?php echo ($list->remind == 1)? 'checked' : ''?>>SMS Notification
+                                            <input type="checkbox" name="sms" value="1" class="sms_notify" <?php echo ($list->remind == 1) ? 'checked' : '' ?>>SMS Notification
                                         </div>
                                     </div>
                                 </div>
@@ -573,14 +573,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-2">
                                     <label for="name" style="clear:both;">Reminder </label>
                                 </div>	
                                 <div class="col-md-3">	
-                                    <?php echo ($list->remind ==1)? 'Yes' : 'No' ?>
+                                    <?php echo ($list->remind == 1) ? 'Yes' : 'No' ?>
                                 </div>
                             </div>
                         </div>
