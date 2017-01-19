@@ -38,7 +38,7 @@
                                 <th>Business Name</th>
                                 <th><?php echo lang('stripe_secret_key'); ?></th>
                                 <th><?php echo lang('stripe_publish_key'); ?></th>
-                                <th>Paypal Acess Token</th>
+                                <th>Paypal Access Token</th>
                                 <th><?php echo lang('start_invoice');?></th>
                                 <th></th>
                             </tr>
@@ -132,7 +132,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <b>Paypal Acess Token</b>
+                                            <b>Paypal Access Token</b>
                                         </div>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control" name="access_token" value="<?php echo $new->access_token; ?>" />

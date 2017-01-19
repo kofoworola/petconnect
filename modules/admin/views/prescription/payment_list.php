@@ -599,6 +599,7 @@
             //var amount = $(this).closest(".amount").val();
             amount = $(form).find('.amount').val();
             invoice_no = $(form).find('.invoice_no').val();
+            date = $(form).find('.date').val();
             if (amount === "" || patient_id === "")
             {
                 var error = "<div class='alert alert-danger alert-dismissable'><i class='fa fa-ban'></i><button type='button' class='close' data-dismiss='alert' aria-hidden='true'><i class='fa fa-close'></i></button><b>Alert!</b><p>Please fill all fields before proceeding</p></div>";
@@ -619,13 +620,13 @@
                             // Tokenize here!
                             paypalInstance.tokenize({
                                 flow: 'checkout', // Required
-                                amount: 10.00, // Required
+                                amount: amount, // Required
                                 currency: 'USD', // Required
                                 locale: 'en_US'
                             }, function (err, tokenizationPayload) {
                                 // Tokenization complete
                                 // Send tokenizationPayload.nonce to server
-                                $.post("<?php echo site_url('admin/payment/paypal_confirm') ?>", {nonce: tokenizationPayload.nonce, amount: amount, patient_id: patient_id, invoice_no: invoice_no, order_no: '<?php echo $order_no?>'}, function (data)
+                                $.post("<?php echo site_url('admin/payment/paypal_confirm') ?>", {nonce: tokenizationPayload.nonce, amount: amount, patient_id: patient_id, invoice_no: invoice_no, order_no: '<?php echo $order_no?>', date: date}, function (data)
                                 {
                                     location.reload(true);
                                 });
