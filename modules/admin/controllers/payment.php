@@ -82,26 +82,24 @@ class payment extends MX_Controller {
                 "paymentMethodNonce" => $nonce,
                 "orderId" => $order_no,
                 "descriptor" => [
-                    "name" => $setting->name,
-                    "phone" => $setting->contact
+                    "name" => 'cmp*productdescription',
+                    "phone" => $seting->contact
                 ]
             ]);
             if ($result->success) {
-                $save['amount'] = $this->input->post('amount');
+                $save['amount'] = $amount;
                 $save['patient_id'] = $this->input->post('patient_id');
-                $save['payment_mode'] = "Paypal";
+                $save['payment_mode'] = "Payapal";
                 $save['date'] = $this->input->post('date');
-                $save['order_no'] = $this->input->post('order_no');
                 $save['invoice'] = $this->input->post('invoice_no');
+                $save['order_no'] = $order_no;
                 $this->prescription_model->save_fees($save);
                 $this->session->set_flashdata('message', 'Payment was complete, transaction id: ' . $result->transaction->id);
-                echo 'done';
             } else {
                 $this->session->set_flashdata('error', 'Payment could not be complete: ' . $result->message);
-                echo 'failed';
             }
         } else {
-            redirect('admin/dashboard');
+            redirect('admin/dshboard');
         }
     }
 
