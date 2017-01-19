@@ -97,22 +97,6 @@ class cron extends MX_Controller {
         }
     }
 
-    function upload_drive() {
-        require_once APPPATH . '/vendor/autoload.php';
-        //define('GOOGLE_APPLICATION_CREDENTIALS', APPPATH . '/assets/petconnect-account.json');
-        putenv('GOOGLE_APPLICATION_CREDENTIALS='.APPPATH. '/assets/petconnect-account.json');
-        $client = new Google_Client();
-        $client->useApplicationDefaultCredentials();
-        $client->addScope(Google_Service_Drive::DRIVE_FILE);
-        $service = new Google_Service_Drive($client);
-        $file = new Google_Service_Drive_DriveFile();
-        $file->setName("kofo file");
-        $result = $service->files->create($file, array(
-            'data' => "hello google drive",
-            'mimeType' => 'application/octet-stream',
-            'uploadType' => 'media'
-        ));
-        print_r($result->id);
-    }
+    
 
 }
