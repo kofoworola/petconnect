@@ -1,16 +1,10 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of calendar_beta
- *
- * @author kofoworola
- */
-class calendar_beta {
-    //put your code here
+class calendar_beta extends MX_Controller{
+    
+    public function _construct()
+    {
+        parent::__construct();
+    }
 }
