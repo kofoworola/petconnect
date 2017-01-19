@@ -83,6 +83,7 @@ class patient_model extends CI_Model {
             $this->db->where('doctor_id', $admin['doctor_id']);
         }
         $this->db->where('user_role', 2);
+        $this->db->order_by("name", "asc");
         return $this->db->get('users')->result();
     }
 

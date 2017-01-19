@@ -39,7 +39,6 @@ $CI->load->model('message_model');
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th><?php echo lang('serial_number'); ?></th>
                                 <th><?php echo lang('name'); ?></th>
                                 <th width="20%"><?php echo lang('action'); ?></th>
                             </tr>
@@ -55,7 +54,6 @@ $CI->load->model('message_model');
                                     if ($new->id != $admin['id']) {
                                         ?>
                                         <tr class="gc_row">
-                                            <td><?php echo $i ?></td>
                                             <td><?php echo $new->name ?>
                                                 <?php
                                                 $result = $CI->db->query("SELECT `M`.*, `U1`.`name` from_user, `U2`.`name` to_user, `U1`.`image` FROM (`user_message` M) LEFT JOIN `users` U2 ON `U2`.`id` = `M`.`to_id` LEFT JOIN `users` U1 ON `U1`.`id` = `M`.`from_id` WHERE `M`.`to_id` = '" . $admin['id'] . "' AND `M`.`from_id` = '" . $new->id . "' AND `M`.`is_view_to` = 1 ")->result();
