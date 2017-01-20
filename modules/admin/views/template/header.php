@@ -589,7 +589,12 @@ $fourth = $this->uri->segment(4);
                                 </a>
                             </li>
 
-
+                            <li class="<?php echo($this->uri->segment(2) == 'calendar_beta') ? 'active' : ''; ?>">
+                                <a href="<?php echo site_url('admin/calendar_beta'); ?>">
+                                    <i class="fa fa-calendar"></i> <span> Calendar Beta</span> 
+                                </a>
+                            </li>
+                            
                             <li class="treeview <?php echo($this->uri->segment(2) == 'message') ? 'active' : ''; ?>">
                                 <a href="<?php echo site_url('admin/message'); ?>">
                                     <i class="fa fa-envelope"></i> <span><?php echo lang('message'); ?> </span>
